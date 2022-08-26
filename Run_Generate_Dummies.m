@@ -1,5 +1,8 @@
 clc, clear, close all
 
+%%되는건가
+
+
 %%% #1 On/Off 부하
 
 t2 = -0.1:1/10e3:0.3;
