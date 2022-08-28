@@ -13,20 +13,11 @@ clc, clear, close all
 %L2 = Func_Onoff(t2,w2);
 
 %%% #3 주기성 부하
-t = 0:1:1100;
 %밤주기
-if t<=200
-   cycle = 200;
-   duty = 62.5; %%66.67
-%낮주기
-elseif 200<t<=700
-    cycle = 250;
-    duty=66.67;
-%밤주
-elseif t>700
-    cycle = 200;
-     duty = 62.5;
-end
+t = 1:10000
+cycle = 0.000967;
+duty = 65.67;
+
 L3 = Func_Signal_Cycle(t, cycle, duty);
 
 %%종합
