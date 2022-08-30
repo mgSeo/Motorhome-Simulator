@@ -14,24 +14,25 @@ clc, clear, close all
 
 %%% #3 주기성 부하
 %밤주기
-%t = 1:1000;
-%cycle = 0.000967;
-%duty = 65.67;
 
-%L3 = Func_Signal_Cycle(t, cycle, duty);
+t = 1:10000;
+cycle = 0.000967;
+duty = 65.67;
+L3 = Func_Signal_Cycle(t, cycle, duty);
 
 %모터 모드
-t5= 1:1000;
-prompt="mode?";
-k=input(prompt);
-cycle2=modevalue(k);
-duty2=10;
+%t5= 1:1000;
+%prompt="mode?";
+%k=input(prompt);
+%cycle2=modevalue(k);
+%duty2=100*dutyvalue(k);
 
-L5=Func_Signal_Cycle(t5, cycle2, duty2);
+%L5=Func_Signal_Cycle(t5, cycle2, duty2);
 
 %%종합
 %L4= L1+L2+L3;
 
 
 %%t
-plot(t5 ,L5)
+%plot(t5 ,L5)
+plot(t,L3)
