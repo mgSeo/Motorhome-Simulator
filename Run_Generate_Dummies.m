@@ -15,24 +15,144 @@ clc, clear, close all
 %%% #3 주기성 부하
 %밤주기
 
-t = 1:10000;
-cycle = 0.000967;
-duty = 65.67;
-L3 = Func_Signal_Cycle(t, cycle, duty);
+%t = 1:10000;
+%cycle = 0.000967;
+%duty = 65.67;
+%L3 = Func_Signal_Cycle(t, cycle, duty);
 
 %모터 모드
 %t5= 1:1000;
-%prompt="mode?";
-%k=input(prompt);
-%cycle2=modevalue(k);
-%duty2=100*dutyvalue(k);
+
+%cycle2= 2*pi/((54+6)*10);
+%duty2=10;
 
 %L5=Func_Signal_Cycle(t5, cycle2, duty2);
-
+%z=sumsum(L5);
 %%종합
 %L4= L1+L2+L3;
 
+%모터54
+%t = 1:60;
+%x = zeros(1,540);
+%y = zeros(1,540);
+%for i=1:5
+  %  x = [x square(t*0.033*pi, 50)];
+   % x = [x y];
+%end
+%z = cumsum(x);
+%plot(z);
 
+%모터48
+%t = 1:60;
+%x = zeros(1,480);
+%y = zeros(1,480);
+%for i=1:5
+ %   x = [x square(t*0.033*pi, 50)];
+  %  x = [x y];
+%end
+%z = cumsum(x);
+%plot(z);
+
+%모터42
+%t = 1:60;
+%x = zeros(1,420);
+%y = zeros(1,420);
+%for i=1:5
+ %   x = [x square(t*0.033*pi, 50)];
+ %   x = [x y];
+%end
+%z = cumsum(x);
+%plot(z);
+
+%모터36
+%t = 1:60;
+%x = zeros(1,360);
+%y = zeros(1,360);
+%for i=1:5
+ %   x = [x square(t*0.033*pi, 50)];
+  %  x = [x y];
+%end
+%z = cumsum(x);
+%plot(z);
+
+%모터30
+%t = 1:60;
+%x = zeros(1,300);
+%y = zeros(1,300);
+%for i=1:5
+ %   x = [x square(t*0.033*pi, 50)];
+  %  x = [x y];
+%end
+%z = cumsum(x);
+%plot(z);
+
+%모터24
+%t = 1:60;
+%x = zeros(1,240);
+%y = zeros(1,240);
+%for i=1:5
+ %   x = [x square(t*0.033*pi, 50)];
+  %  x = [x y];
+%end
+%z = cumsum(x);
+%plot(z);
+
+%모터18
+%t = 1:60;
+%x = zeros(1,180);
+%y = zeros(1,180);
+%for i=1:5
+ %   x = [x square(t*0.033*pi, 50)];
+  %  x = [x y];
+%end
+%z = cumsum(x);
+%plot(z);
+
+%모터12
+%t = 1:60;
+%x = zeros(1,120);
+%y = zeros(1,120);
+%for i=1:5
+ %   x = [x square(t*0.033*pi, 50)];
+  %  x = [x y];
+%end
+%z = cumsum(x);
+%plot(z);
+
+%모터6
+%t = 1:60;
+%x = zeros(1,60);
+%y = zeros(1,60);
+%for i=1:5
+ %   x = [x square(t*0.033*pi, 50)];
+  %  x = [x y];
+%end
+%z = cumsum(x);
+%plot(z);
+
+%모터54 최고값 변화 테스트
+%t = 1:60;
+%x = zeros(1,540);
+%y = zeros(1,540);
+%for i=1:3
+ %   x = [x 0.03*square(t*0.033*pi, 50)];
+  %  x = [x y];
+%end
+%z = cumsum(x);
+%plot(z);
+
+%다르게 만들어본 모드54
+d1_time = 540;
+d2_time = 60;
+d1 = zeros(1,d1_time);
+t = 1:d2_time;
+d2 = zeros(0);
+for i=1:3
+d2 = [d2 d1];
+d2 = [d2 square(t/(pi*3.1), 50)];
+end
+csum = cumsum(d2)
+plot(csum);
 %%t
 %plot(t5 ,L5)
-plot(t,L3)
+
