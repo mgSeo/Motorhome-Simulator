@@ -2,10 +2,10 @@ clc, clear, close all
 
 %%% #1 On/Off 부하
 
-%t2 = -0.1:1/10e3:0.3;
-%w =  (60e-3);
-%L1 = Func_Onoff(t2-0.1,w);
-
+t2 = -0.1:1/10e3:0.3;
+w =  (60e-3);
+L1 = Func_Onoff(t2-0.1,w)/2;
+plot(t2,L1)
 %%% #2 순시(Puls) 부하
 
 %t3 = -0.1:1/10e3:0.3;
@@ -21,13 +21,13 @@ clc, clear, close all
 %L3 = Func_Signal_Cycle(t, cycle, duty);
 
 %모터 모드
-%t5= 1:1000;
+t5= 1:1000;
 
-%cycle2= 2*pi/((54+6)*10);
-%duty2=10;
+cycle2= 2*pi/((54+6)*10);
+duty2=10;
 
-%L5=Func_Signal_Cycle(t5, cycle2, duty2);
-%z=sumsum(L5);
+L5=Func_Signal_Cycle(t5, cycle2, duty2);
+
 %%종합
 %L4= L1+L2+L3;
 
@@ -141,18 +141,6 @@ clc, clear, close all
 %z = cumsum(x);
 %plot(z);
 
-%다르게 만들어본 모드54
-d1_time = 540;
-d2_time = 60;
-d1 = zeros(1,d1_time);
-t = 1:d2_time;
-d2 = zeros(0);
-for i=1:3
-d2 = [d2 d1];
-d2 = [d2 square(t/(pi*3.1), 50)];
-end
-csum = cumsum(d2)
-plot(csum);
 %%t
 %plot(t5 ,L5)
 
