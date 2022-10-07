@@ -15,11 +15,11 @@ data = Data(14635:35289,:);
 % [dev, sw] = Func_get_SW(data.power);
 
 % get on/off status of fridge
-on_off = [37.9119983667615	-23.6018867260826; 71.3068347557958	-57.3597868980739]; % 추후 수정필요
+load('Fridge_param.mat') % 추후 수정필요
 IDX = [[1:height(data)]' zeros(height(data),4)];
 % for w = 1:height(sw)
 for w = 1:50
-    idx = Func_NILM(data.power(sw.L(w):sw.R(w)),dev(sw.L(w):sw.R(w)),on_off);
+    idx = Func_NILM(data.power(sw.L(w):sw.R(w)),dev(sw.L(w):sw.R(w)),dyn);
     IDX(sw.L(w):sw.R(w),2:5) = round(idx);
 %     IDX = [IDX; [sw.L(w):sw.R(w)]' round(idx)];
 end
