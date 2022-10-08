@@ -16,7 +16,7 @@ data = Data(14635:35289,:);
 
 % get on/off status of fridge
 load('Fridge_param.mat') % 추후 수정필요
-IDX = [[1:height(data)]' zeros(height(data),4)];
+IDX = [(1:height(data))' zeros(height(data),4)];
 for w = 1:height(sw)
     idx = Func_NILM(data.power(sw.L(w):sw.R(w)),dev(sw.L(w):sw.R(w)),dyn);
     IDX(sw.L(w):sw.R(w),2:5) = round(idx);
