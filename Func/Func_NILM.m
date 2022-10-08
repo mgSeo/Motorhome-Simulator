@@ -64,40 +64,40 @@ for i = 2:len
 end
 B_fridge_off_n = -B_fridge_off_p;
 
-% % Fridge pattern on
-A_fridge_pattern_on_p = zeros(N.fridge_dev,N.len);
-A_fridge_pattern_on_p(1:N.fridge_dev,1:N.fridge_dev) = eye(N.fridge_dev) * sum(mean(dyn.on1));
-n = N.fridge_dev + N.fridge_dev;
-A_fridge_pattern_on_p(1:N.fridge_dev,n+1:n+N.fridge_dev) = eye(N.fridge_dev) * sum(mean(dyn.on2));
-A_fridge_pattern_on_n = -A_fridge_pattern_on_p;
-A_fridge_pattern_on_p(:, N.fridge_dev*4 + len + 1 : N.fridge_dev*4 + len + len - 1) = -eye(len-1);
-A_fridge_pattern_on_n(:, N.fridge_dev*4 + len + 1 : N.fridge_dev*4 + len + len - 1) = -eye(len-1);
-B_fridge_pattern_on_p = [];
-for i = 1:len-1
-    s = i;
-    o = i+1;
-    I = power(s) + power(o);
-    B_fridge_pattern_on_p(i,1) = I;
-end
-B_fridge_pattern_on_n = -B_fridge_pattern_on_p;
-
-% Fridge pattern off
-A_fridge_pattern_off_p = zeros(N.fridge_dev,N.len);
-n = N.fridge_dev;
-A_fridge_pattern_off_p(1:N.fridge_dev,n+1:n+N.fridge_dev) = eye(N.fridge_dev) * sum(mean(dyn.off1));
-n = N.fridge_dev + N.fridge_dev + N.fridge_dev;
-A_fridge_pattern_off_p(1:N.fridge_dev,n+1:n+N.fridge_dev) = eye(N.fridge_dev) * sum(mean(dyn.off2));
-A_fridge_pattern_off_n = -A_fridge_pattern_off_p;
-B_fridge_pattern_off_p = [];
-A_fridge_pattern_off_p(:, N.fridge_dev*4 + len + 2 : N.fridge_dev*4 + len + len) = -eye(len-1);
-A_fridge_off_n(:, N.fridge_dev*4 + len + 2 : N.fridge_dev*4 + len + len) = -eye(len-1);
-for i = 2:len
-    s = i - 1;
-    o = i;
-    I = power(s) + power(o);
-    B_fridge_pattern_off_p(i-1,1) = I;
-end
-B_fridge_pattern_off_n = -B_fridge_pattern_off_p;
+% % % Fridge pattern on
+% A_fridge_pattern_on_p = zeros(N.fridge_dev,N.len);
+% A_fridge_pattern_on_p(1:N.fridge_dev,1:N.fridge_dev) = eye(N.fridge_dev) * sum(mean(dyn.on1));
+% n = N.fridge_dev + N.fridge_dev;
+% A_fridge_pattern_on_p(1:N.fridge_dev,n+1:n+N.fridge_dev) = eye(N.fridge_dev) * sum(mean(dyn.on2));
+% A_fridge_pattern_on_n = -A_fridge_pattern_on_p;
+% A_fridge_pattern_on_p(:, N.fridge_dev*4 + len + 1 : N.fridge_dev*4 + len + len - 1) = -eye(len-1);
+% A_fridge_pattern_on_n(:, N.fridge_dev*4 + len + 1 : N.fridge_dev*4 + len + len - 1) = -eye(len-1);
+% B_fridge_pattern_on_p = [];
+% for i = 1:len-1
+%     s = i;
+%     o = i+1;
+%     I = power(s) + power(o);
+%     B_fridge_pattern_on_p(i,1) = I;
+% end
+% B_fridge_pattern_on_n = -B_fridge_pattern_on_p;
+% 
+% % Fridge pattern off
+% A_fridge_pattern_off_p = zeros(N.fridge_dev,N.len);
+% n = N.fridge_dev;
+% A_fridge_pattern_off_p(1:N.fridge_dev,n+1:n+N.fridge_dev) = eye(N.fridge_dev) * sum(mean(dyn.off1));
+% n = N.fridge_dev + N.fridge_dev + N.fridge_dev;
+% A_fridge_pattern_off_p(1:N.fridge_dev,n+1:n+N.fridge_dev) = eye(N.fridge_dev) * sum(mean(dyn.off2));
+% A_fridge_pattern_off_n = -A_fridge_pattern_off_p;
+% B_fridge_pattern_off_p = [];
+% A_fridge_pattern_off_p(:, N.fridge_dev*4 + len + 2 : N.fridge_dev*4 + len + len) = -eye(len-1);
+% A_fridge_off_n(:, N.fridge_dev*4 + len + 2 : N.fridge_dev*4 + len + len) = -eye(len-1);
+% for i = 2:len
+%     s = i - 1;
+%     o = i;
+%     I = power(s) + power(o);
+%     B_fridge_pattern_off_p(i-1,1) = I;
+% end
+% B_fridge_pattern_off_n = -B_fridge_pattern_off_p;
 
 
 
@@ -105,8 +105,8 @@ B_fridge_pattern_off_n = -B_fridge_pattern_off_p;
 A_fridge_condition = [A_fridge_low_high; A_fridge_uc];
 B_fridge_condition = [B_fridge_low_high; B_fridge_uc];
 
-A_fridge_onoff = [A_fridge_on_p; A_fridge_on_n; A_fridge_off_p; A_fridge_off_n; A_fridge_pattern_on_p; A_fridge_pattern_on_n; A_fridge_pattern_off_p; A_fridge_pattern_off_n];
-B_fridge_onoff = [B_fridge_on_p; B_fridge_on_n; B_fridge_off_p; B_fridge_off_n; B_fridge_pattern_on_p; B_fridge_pattern_on_n; B_fridge_pattern_off_p; B_fridge_pattern_off_n];
+A_fridge_onoff = [A_fridge_on_p; A_fridge_on_n; A_fridge_off_p; A_fridge_off_n];% A_fridge_pattern_on_p; A_fridge_pattern_on_n; A_fridge_pattern_off_p; A_fridge_pattern_off_n];
+B_fridge_onoff = [B_fridge_on_p; B_fridge_on_n; B_fridge_off_p; B_fridge_off_n];% B_fridge_pattern_on_p; B_fridge_pattern_on_n; B_fridge_pattern_off_p; B_fridge_pattern_off_n];
 
 A = [A_fridge_condition; A_fridge_onoff];
 B = [B_fridge_condition; B_fridge_onoff];
